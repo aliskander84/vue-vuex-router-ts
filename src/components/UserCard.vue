@@ -1,19 +1,22 @@
 <template>
-  <v-card>
-    <!--suppress HtmlUnknownTarget -->
-    <v-img
-        :src="img"
-        :alt="`${firstName} ${lastName}`"
-    />
-    <v-card-title>
-      {{this.firstName}} {{this.lastName}}
-    </v-card-title>
-    <v-card-subtitle>
-      ID: {{this.id}}
-    </v-card-subtitle>
-    <v-card-text>
-      {{this.img}}
-    </v-card-text>
+  <v-card class="d-flex align-center" style="cursor: pointer">
+    <v-avatar left class="ml-3" style="border-radius: 50%">
+      <!--suppress HtmlUnknownTarget -->
+      <v-img
+          :alt="`${firstName} ${lastName}`"
+          :src="img"
+      />
+    </v-avatar>
+
+    <div class="">
+      <v-card-title class="pt-2">
+        {{this.firstName}} {{this.lastName}}
+      </v-card-title>
+
+      <v-card-subtitle class="pb-2">
+        ID: {{this.id ? this.id : '---'}}
+      </v-card-subtitle>
+    </div>
   </v-card>
 </template>
 

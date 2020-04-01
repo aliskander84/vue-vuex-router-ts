@@ -5,7 +5,7 @@
       dark
   >
     <v-icon>mdi-account-group</v-icon>
-    <v-toolbar-title class="ml-6">Random users</v-toolbar-title>
+    <v-toolbar-title class="ml-3 headline">Random users</v-toolbar-title>
   </v-app-bar>
 </template>
 
