@@ -1,18 +1,18 @@
 <template>
-  <v-card class="mx-3">
+  <v-card>
+    <!--suppress HtmlUnknownTarget -->
     <v-img
-        :src="pic"
-        width="200px"
+        :src="img"
+        :alt="`${firstName} ${lastName}`"
     />
     <v-card-title>
-      Title
+      {{this.firstName}} {{this.lastName}}
     </v-card-title>
     <v-card-subtitle>
-      Subtitle
+      ID: {{this.id}}
     </v-card-subtitle>
     <v-card-text>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate deserunt dolor eligendi eveniet excepturi
-      maxime quibusdam quisquam sapiente tempora voluptate.
+      {{this.img}}
     </v-card-text>
   </v-card>
 </template>
@@ -24,7 +24,7 @@
     name: 'UserCard',
     props: {
       id: String,
-      pic: String,
+      img: String,
       firstName: String,
       lastName: String
     }

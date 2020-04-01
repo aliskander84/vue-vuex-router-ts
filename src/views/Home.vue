@@ -1,13 +1,18 @@
 <template>
   <div class="home">
     <Search/>
-    <Loader/>
-    <!--    <UserCard-->
-<!--      :id="users[0].id.name"-->
-<!--      :pic="users[0].picture.large"-->
-<!--      :first-name="users[0].name.first"-->
-<!--      :last-name="users[0].name.last"-->
-<!--    />-->
+    <Loader v-if="isLoading"/>
+    <div class="users" v-if="!isLoading">
+      <UserCard
+          :first-name="user.name.first"
+          :id="user.id.name"
+          :img="user.picture.large"
+          :key="index"
+          :last-name="user.name.last"
+          v-for="(user, index) in users"
+          :class="`mx-3 mt-3 ${index === users.length - 1 ? 'mb-3' : ''}`"
+      />
+    </div>
   </div>
 </template>
 
@@ -22,18 +27,24 @@
     name: 'Home',
     data() {
       return {
-        users: [] as TUsers
+        users: [] as TUsers,
+        isLoading: true
       }
     },
     async mounted() {
-      const res = await fetch('https://randomuser.me/api/?results=20&inc=id,picture,name')
-      const users: TUsers = await res.json()
-      this.users = users
+      try {
+        const res = await fetch('https://randomuser.me/api/?results=5&inc=id,picture,name')
+        const users = await res.json()
+        this.users = users.results
+        this.isLoading = false
+      } catch (e) {
+        console.log(e)
+      }
     },
     components: {
       Loader,
       Search,
-      // UserCard
+      UserCard
     }
   })
 </script>
