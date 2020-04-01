@@ -1,6 +1,6 @@
 <template>
-  <div class="home-page">
-    HomePage
+  <div class="user">
+    User
   </div>
 </template>
 
@@ -8,6 +8,6 @@
   import Vue from 'vue'
 
   export default Vue.extend({
-    name: 'HomePage'
+    name: 'User'
   })
 </script>

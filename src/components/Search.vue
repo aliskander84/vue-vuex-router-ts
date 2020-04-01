@@ -1,6 +1,6 @@
 <template>
-  <div class="user-page">
-    UserPage
+  <div class="search">
+
   </div>
 </template>
 
@@ -8,6 +8,6 @@
   import Vue from 'vue'
 
   export default Vue.extend({
-    name: 'UserPage'
+    name: 'Search'
   })
 </script>

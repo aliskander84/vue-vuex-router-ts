@@ -1,6 +1,6 @@
 <template>
-  <div class="about-page">
-    AboutPage
+  <div class="about">
+    About
   </div>
 </template>
 
@@ -8,6 +8,6 @@
   import Vue from 'vue'
 
   export default Vue.extend({
-    name: 'AboutPage'
+    name: 'About'
   })
 </script>
