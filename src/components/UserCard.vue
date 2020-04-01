@@ -1,6 +1,6 @@
 <template>
   <v-card class="d-flex align-center" style="cursor: pointer">
-    <v-avatar left class="ml-3" style="border-radius: 50%">
+    <v-avatar class="ml-3" left style="border-radius: 50%">
       <!--suppress HtmlUnknownTarget -->
       <v-img
           :alt="`${firstName} ${lastName}`"
@@ -10,7 +10,9 @@
 
     <div class="">
       <v-card-title class="pt-2">
-        {{this.firstName}} {{this.lastName}}
+        <router-link to="/">
+          {{this.firstName}} {{this.lastName}}
+        </router-link>
       </v-card-title>
 
       <v-card-subtitle class="pb-2">

@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    User
+    User {{$route.params}}
   </div>
 </template>
 
@@ -8,6 +8,11 @@
   import Vue from 'vue'
 
   export default Vue.extend({
-    name: 'User'
+    name: 'User',
+    // data() {
+    //   return {
+    //     $route.params.id
+    //   }
+    // }
   })
 </script>

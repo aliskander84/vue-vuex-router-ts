@@ -22,7 +22,6 @@
   import Loader from '@/components/Loader.vue'
   import Search from '@/components/Search.vue'
   import UserCard from '@/components/UserCard.vue'
-  // import {TUsers} from '@/store/types'
 
   export default Vue.extend({
     name: 'Home',
@@ -34,8 +33,9 @@
       }
     },
     async mounted() {
-      this.getUsers(3)
+      this.getUsers(5)
       this.isLoading = false
+      console.log('Home mount')
     },
     components: {
       Loader,
