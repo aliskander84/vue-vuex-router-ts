@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    Home
     <Search/>
     <UserCard/>
   </div>
@@ -13,6 +12,11 @@
 
   export default Vue.extend({
     name: 'Home',
+    mounted(): void {
+      fetch('https://randomuser.me/api/?results=20&inc=id,picture,name')
+      .then(res => res.json())
+      .then(data => console.log(data))
+    },
     components: {
       Search,
       UserCard

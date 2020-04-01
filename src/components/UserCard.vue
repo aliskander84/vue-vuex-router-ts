@@ -1,7 +1,7 @@
 <template>
-  <div class="user-card">
+  <v-card>
     UserCard
-  </div>
+  </v-card>
 </template>
 
 <script lang="ts">

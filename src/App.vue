@@ -15,9 +15,6 @@
     name: 'App',
     components: {
       Header
-    },
-    data: () => ({
-      //
-    })
+    }
   })
 </script>
