@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <Header/>
-    <v-content>
+    <v-content
+        class=".d-none-xs"
+    >
       <router-view/>
     </v-content>
   </v-app>

@@ -1,25 +1,35 @@
 <template>
-  <v-card class="d-flex align-center" style="cursor: pointer">
-    <v-avatar class="ml-3" left style="border-radius: 50%">
-      <!--suppress HtmlUnknownTarget -->
-      <v-img
-          :alt="`${firstName} ${lastName}`"
-          :src="img"
-      />
-    </v-avatar>
+  <v-hover
+      v-slot:default="{ hover }"
+  >
+    <v-card
+        class="d-flex align-center"
+        :elevation="hover ? 6 : 2"
+    >
+      <v-avatar class="ml-3" left style="border-radius: 50%">
+        <!--suppress HtmlUnknownTarget -->
+        <v-img
+            :alt="`${firstName} ${lastName}`"
+            :src="img"
+        />
+      </v-avatar>
 
-    <div class="">
-      <v-card-title class="pt-2">
-        <router-link :to="{name: 'User', params: {id: index.toString()}}">
-          {{firstName}} {{lastName}}
-        </router-link>
-      </v-card-title>
+      <div class="">
+        <v-card-title class="pt-2">
+          <router-link
+              :to="{name: 'User', params: {id: index.toString()}}"
+              style="text-decoration: none"
+          >
+            {{firstName}} {{lastName}}
+          </router-link>
+        </v-card-title>
 
-      <v-card-subtitle class="pb-2">
-        ID: {{userId ? userId : '---'}}
-      </v-card-subtitle>
-    </div>
-  </v-card>
+        <v-card-subtitle class="pb-2">
+          ID: {{userId ? userId : '---'}}
+        </v-card-subtitle>
+      </div>
+    </v-card>
+  </v-hover>
 </template>
 
 <script lang="ts">
