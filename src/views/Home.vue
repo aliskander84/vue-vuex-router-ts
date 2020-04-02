@@ -6,7 +6,8 @@
       <UserCard
           :class="`mx-3 mt-3 ${index === users.length - 1 ? 'mb-3' : ''}`"
           :first-name="user.name.first"
-          :id="user.id.name"
+          :index="index"
+          :userId="user.id.name"
           :img="user.picture.large"
           :key="index"
           :last-name="user.name.last"
@@ -26,16 +27,16 @@
   export default Vue.extend({
     name: 'Home',
     computed: mapGetters(['users']),
-    methods: mapActions(['getUsers']),
+    methods: mapActions(['fetchUsers']),
     data() {
       return {
         isLoading: true
       }
     },
-    async mounted() {
-      this.getUsers(5)
+    mounted() {
+      this.fetchUsers(5)
       this.isLoading = false
-      console.log('Home mount')
+      console.log(this.users)
     },
     components: {
       Loader,

@@ -10,13 +10,13 @@
 
     <div class="">
       <v-card-title class="pt-2">
-        <router-link to="/">
-          {{this.firstName}} {{this.lastName}}
+        <router-link :to="{name: 'User', params: {id: index.toString()}}">
+          {{firstName}} {{lastName}}
         </router-link>
       </v-card-title>
 
       <v-card-subtitle class="pb-2">
-        ID: {{this.id ? this.id : '---'}}
+        ID: {{userId ? userId : '---'}}
       </v-card-subtitle>
     </div>
   </v-card>
@@ -28,7 +28,8 @@
   export default Vue.extend({
     name: 'UserCard',
     props: {
-      id: String,
+      index: Number,
+      userId: String,
       img: String,
       firstName: String,
       lastName: String

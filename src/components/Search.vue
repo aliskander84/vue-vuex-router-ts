@@ -6,7 +6,6 @@
       placeholder="Search..."
       :label="searchText ? 'Search' : null"
       :onchange="search(searchText)"
-      onblur="console.log('blur')"
     />
   </v-form>
 </template>

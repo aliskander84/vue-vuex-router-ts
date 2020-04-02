@@ -1,15 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {TUsers} from './types'
+import {TUser, TUsers} from './types'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   actions: {
-    async getUsers(ctx, limit = 5) {
+    async fetchUsers(ctx, limit = 5) {
       try {
         const res = await fetch(`https://randomuser.me/api/?results=${limit}&inc=id,picture,name`)
         const {results} = await res.json()
+        console.log(results)
         ctx.commit('updateUsers', results)
       } catch (e) {
         console.log(e)
@@ -23,11 +24,12 @@ export default new Vuex.Store({
         const matchLast: string[] | null = last.match(new RegExp(text, 'gi'))
         return matchFirst || matchLast
       })
-      console.log(text)
+      console.log('search:', text)
       ctx.commit('updateSearchUsers', filtered)
       ctx.commit('updateSearchText', text)
     }
   },
+
   mutations: {
     updateUsers (state, users) {
       state.users = users
@@ -39,15 +41,21 @@ export default new Vuex.Store({
       state.searchText = text
     }
   },
+
   state: {
     users: [] as TUsers,
     searchUsers: [] as TUsers,
     searchText: ''
   },
+
   getters: {
     users(state): TUsers {
       const isSearch: boolean = state.searchUsers.length > 0 || state.searchText !== ''
       return isSearch ? state.searchUsers : state.users
+    },
+    user(state, index): TUser {
+      const isSearch: boolean = state.searchUsers.length > 0 || state.searchText !== ''
+      return isSearch ? state.searchUsers[index] : state.users[index]
     }
   }
 })
