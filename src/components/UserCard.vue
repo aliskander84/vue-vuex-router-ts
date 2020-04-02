@@ -25,7 +25,7 @@
               text
           >
             <router-link
-                :to="{name: 'User', params: {id: index.toString()}}"
+                :to="{name: 'user', params: {id: index.toString()}}"
                 style="text-decoration: none"
             >
               Details >

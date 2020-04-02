@@ -8,18 +8,18 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {
     path: '/user/:id',
-    name: 'User',
+    name: 'user',
     component: User,
     props: true
   },
   {
     path: '/about',
-    name: 'About',
+    name: 'about',
     component: () => import('../views/About.vue')
   },
   {
