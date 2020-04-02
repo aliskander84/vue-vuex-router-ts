@@ -18,7 +18,7 @@
     },
     computed: mapGetters(['user']),
     mounted(): void {
-      console.log(this.user)
+      // console.log(this.user)
       // console.log(this.$route)
       // console.log(this.$props)
     }

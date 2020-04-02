@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {TUser, TUsers} from './types'
+import {TUser, TUsers, UPDATE_IS_LOADING, UPDATE_SEARCH_TEXT, UPDATE_SEARCH_USERS, UPDATE_USERS} from './types'
 
 Vue.use(Vuex)
 
@@ -31,16 +31,16 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    updateUsers (state, users) {
+    [UPDATE_USERS] (state, users) {
       state.users = users
     },
-    updateSearchUsers (state, users) {
+    [UPDATE_SEARCH_USERS] (state, users) {
       state.searchUsers = users
     },
-    updateSearchText (state, text) {
+    [UPDATE_SEARCH_TEXT] (state, text) {
       state.searchText = text
     },
-    updateIsLoading (state, isLoading) {
+    [UPDATE_IS_LOADING] (state, isLoading) {
       state.isLoading = isLoading
     }
   },
