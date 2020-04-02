@@ -2,7 +2,6 @@
   <div class="home mx-3">
     <Search class="mt-3"/>
     <Loader v-if="isLoading"/>
-
     <v-container fluid>
       <v-row>
         <v-col
@@ -24,7 +23,6 @@
         </v-col>
       </v-row>
     </v-container>
-
     <div
         class="not-results mt-3 mx-3 d-flex justify-center"
         v-if="users.length === 0 && !isLoading"

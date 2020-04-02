@@ -1,14 +1,20 @@
 <template>
-
-  <div class="loader">
-    <v-skeleton-loader
-        class="mt-3"
-        type="card"
-        height="90"
-        v-for="l in countUsers"
-        :key="l"
-    />
-  </div>
+  <v-container fluid>
+    <v-row>
+      <v-col
+          :cols="cols"
+          :key="l"
+          class="pa-1"
+          v-for="l in countUsers"
+      >
+        <v-skeleton-loader
+            class=""
+            height="90"
+            type="card"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts">
