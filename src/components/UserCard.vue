@@ -3,8 +3,8 @@
       v-slot:default="{ hover }"
   >
     <v-card
-        class="d-flex align-center"
         :elevation="hover ? 6 : 2"
+        class="d-flex align-center"
         height="90px"
     >
       <v-avatar class="ml-3" left style="border-radius: 50%">
@@ -14,19 +14,23 @@
             :src="img"
         />
       </v-avatar>
-
-      <div class="">
+      <div class="flex-grow-1">
         <v-card-title class="pt-2">
-          <router-link
-              :to="{name: 'User', params: {id: index.toString()}}"
-              style="text-decoration: none"
-          >
-            {{firstName}} {{lastName}}
-          </router-link>
+          {{firstName}} {{lastName}}
         </v-card-title>
-
-        <v-card-subtitle class="pb-2">
-          ID: {{userId ? userId : '---'}}
+        <v-card-subtitle class="pb-2 d-flex justify-space-between align-center">
+          <span>ID: {{userId ? userId : '---'}}</span>
+          <v-btn
+              small
+              text
+          >
+            <router-link
+                :to="{name: 'User', params: {id: index.toString()}}"
+                style="text-decoration: none"
+            >
+              Details >
+            </router-link>
+          </v-btn>
         </v-card-subtitle>
       </div>
     </v-card>
