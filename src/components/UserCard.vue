@@ -5,6 +5,7 @@
     <v-card
         class="d-flex align-center"
         :elevation="hover ? 6 : 2"
+        height="90px"
     >
       <v-avatar class="ml-3" left style="border-radius: 50%">
         <!--suppress HtmlUnknownTarget -->

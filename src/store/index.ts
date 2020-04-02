@@ -50,7 +50,7 @@ export default new Vuex.Store({
     searchUsers: [] as TUsers,
     searchText: '',
     isLoading: true,
-    countUsers: 5
+    countUsers: 20
   },
 
   getters: {

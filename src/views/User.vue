@@ -1,9 +1,6 @@
 <template>
   <div class="user">
-<!--        User {{id}}-->
-    <v-img
-        src=""
-    />
+
   </div>
 </template>
 
