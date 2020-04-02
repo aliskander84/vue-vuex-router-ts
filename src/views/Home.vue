@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <Search/>
+  <div class="home mx-3">
+    <Search class="mt-3"/>
     <Loader v-if="isLoading"/>
     <div class="users" v-if="!isLoading">
       <UserCard
-          :class="`mx-3 mt-3 ${index === users.length - 1 ? 'mb-3' : ''}`"
+          :class="`mt-3 ${index === users.length - 1 ? 'mb-3' : ''}`"
           :first-name="user.name.first"
-          :index="index"
-          :userId="user.id.name"
           :img="user.picture.large"
+          :index="index"
           :key="index"
           :last-name="user.name.last"
+          :userId="user.id.name"
           v-for="(user, index) in users"
       />
+    </div>
+    <div
+        class="not-results mt-3 mx-3 d-flex justify-center"
+        v-if="users.length === 0 && !isLoading"
+    >
+      No results for query
     </div>
   </div>
 </template>
@@ -26,17 +32,10 @@
 
   export default Vue.extend({
     name: 'Home',
-    computed: mapGetters(['users']),
+    computed: mapGetters(['users', 'isLoading']),
     methods: mapActions(['fetchUsers']),
-    data() {
-      return {
-        isLoading: true
-      }
-    },
     mounted() {
-      this.fetchUsers(5)
-      this.isLoading = false
-      console.log(this.users)
+      this.fetchUsers()
     },
     components: {
       Loader,

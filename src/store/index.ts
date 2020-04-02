@@ -6,12 +6,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   actions: {
-    async fetchUsers(ctx, limit = 5) {
+    async fetchUsers(ctx) {
+      const limit = this.state.countUsers
       try {
         const res = await fetch(`https://randomuser.me/api/?results=${limit}&inc=id,picture,name`)
         const {results} = await res.json()
-        console.log(results)
         ctx.commit('updateUsers', results)
+        ctx.commit('updateIsLoading', false)
       } catch (e) {
         console.log(e)
       }
@@ -24,9 +25,8 @@ export default new Vuex.Store({
         const matchLast: string[] | null = last.match(new RegExp(text, 'gi'))
         return matchFirst || matchLast
       })
-      console.log('search:', text)
       ctx.commit('updateSearchUsers', filtered)
-      ctx.commit('updateSearchText', text)
+      ctx.commit('updateSearchText', text !== null ? text : '')
     }
   },
 
@@ -39,13 +39,18 @@ export default new Vuex.Store({
     },
     updateSearchText (state, text) {
       state.searchText = text
+    },
+    updateIsLoading (state, isLoading) {
+      state.isLoading = isLoading
     }
   },
 
   state: {
     users: [] as TUsers,
     searchUsers: [] as TUsers,
-    searchText: ''
+    searchText: '',
+    isLoading: true,
+    countUsers: 5
   },
 
   getters: {
@@ -56,6 +61,15 @@ export default new Vuex.Store({
     user(state, index): TUser {
       const isSearch: boolean = state.searchUsers.length > 0 || state.searchText !== ''
       return isSearch ? state.searchUsers[index] : state.users[index]
+    },
+    searchText(state) {
+      return state.searchText
+    },
+    isLoading(state) {
+      return state.isLoading
+    },
+    countUsers(state) {
+      return state.countUsers
     }
   }
 })

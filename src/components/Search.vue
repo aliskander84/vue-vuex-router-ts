@@ -1,26 +1,24 @@
 <template>
-  <v-form class="mx-3 mt-3">
+  <v-form class="">
     <v-text-field
-      v-model="searchText"
-      outlined
-      placeholder="Search..."
-      :label="searchText ? 'Search' : null"
-      :onchange="search(searchText)"
+        :value="searchText"
+        @input="search"
+        autocomplete="off"
+        hint="Type search text here"
+        outlined
+        placeholder="Search..."
+        clearable
     />
   </v-form>
 </template>
 
 <script lang="ts">
   import Vue from 'vue'
-  import {mapActions} from 'vuex'
+  import {mapActions, mapGetters} from 'vuex'
 
   export default Vue.extend({
     name: 'Search',
-    data() {
-      return {
-        searchText: ''
-      }
-    },
-    methods: mapActions(['search'])
+    computed: mapGetters(['searchText']),
+    methods: mapActions(['search', 'clearSearch'])
   })
 </script>
