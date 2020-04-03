@@ -3,7 +3,7 @@
       v-slot:default="{ hover }"
   >
     <v-card
-        :elevation="hover ? 6 : 2"
+        :elevation="hover ? 9 : 3"
         class="d-flex align-center"
         height="90px"
     >
@@ -39,6 +39,7 @@
 
 <script lang="ts">
   import Vue from 'vue'
+  import {mapActions} from 'vuex'
 
   export default Vue.extend({
     name: 'UserCard',
