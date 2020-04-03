@@ -23,7 +23,7 @@ export default new Vuex.Store({
         ctx.commit(UPDATE_USERS, results)
         ctx.commit(UPDATE_IS_LOADING, false)
       } catch (e) {
-        console.log(e)
+        // console.log(e)
       }
     },
     search(ctx, text) {
