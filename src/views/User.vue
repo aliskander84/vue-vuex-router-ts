@@ -6,18 +6,20 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import {mapGetters} from 'vuex'
+  import {mapActions, mapGetters} from 'vuex'
 
   export default Vue.extend({
     name: 'User',
     props: {
       id: String
     },
+    methods: mapActions(['setCurrentUser']),
     computed: mapGetters(['user']),
     mounted(): void {
-      // console.log(this.user)
-      // console.log(this.$route)
-      // console.log(this.$props)
+      this.setCurrentUser(this.id)
+    },
+    beforeDestroy(): void {
+      this.setCurrentUser(null)
     }
   })
 </script>

@@ -14,7 +14,7 @@
             <UserCard
                 class=""
                 :first-name="user.name.first"
-                :img="user.picture.large"
+                :img="user.picture.thumbnail"
                 :index="index"
                 :last-name="user.name.last"
                 :userId="user.id.name"

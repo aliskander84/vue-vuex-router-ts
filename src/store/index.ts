@@ -1,6 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {TUser, TUsers, UPDATE_IS_LOADING, UPDATE_SEARCH_TEXT, UPDATE_SEARCH_USERS, UPDATE_USERS} from './types'
+import {
+  TUser,
+  TUsers,
+  UPDATE_CURRENT_USER,
+  UPDATE_IS_LOADING,
+  UPDATE_SEARCH_TEXT,
+  UPDATE_SEARCH_USERS,
+  UPDATE_USERS
+} from './types'
+import {joinAPILink} from '@/api/api'
 
 Vue.use(Vuex)
 
@@ -9,15 +18,16 @@ export default new Vuex.Store({
     async fetchUsers(ctx) {
       const limit = this.state.countUsers
       try {
-        const res = await fetch(`https://randomuser.me/api/?results=${limit}&inc=id,picture,name`)
+        const res = await fetch(joinAPILink(limit))
         const {results} = await res.json()
+        // console.log(results)
         ctx.commit('updateUsers', results)
         ctx.commit('updateIsLoading', false)
       } catch (e) {
         console.log(e)
       }
     },
-    search (ctx, text) {
+    search(ctx, text) {
       const filtered = this.state.users.filter(u => {
         const first: string = u.name.first
         const last: string = u.name.last
@@ -25,8 +35,12 @@ export default new Vuex.Store({
         const matchLast: string[] | null = last.match(new RegExp(text, 'gi'))
         return matchFirst || matchLast
       })
-      ctx.commit('updateSearchUsers', filtered)
-      ctx.commit('updateSearchText', text !== null ? text : '')
+      ctx.commit(UPDATE_SEARCH_USERS, filtered)
+      ctx.commit(UPDATE_SEARCH_TEXT, text !== null ? text : '')
+    },
+    setCurrentUser(ctx, index) {
+      console.log('index:', index)
+      ctx.commit(UPDATE_CURRENT_USER, index)
     }
   },
 
@@ -42,6 +56,9 @@ export default new Vuex.Store({
     },
     [UPDATE_IS_LOADING] (state, isLoading) {
       state.isLoading = isLoading
+    },
+    [UPDATE_CURRENT_USER] (state, index) {
+      state.currentUserIndex = index
     }
   },
 
@@ -50,7 +67,8 @@ export default new Vuex.Store({
     searchUsers: [] as TUsers,
     searchText: '',
     isLoading: true,
-    countUsers: 20
+    countUsers: 20,
+    currentUserIndex: null
   },
 
   getters: {
@@ -58,9 +76,10 @@ export default new Vuex.Store({
       const isSearch: boolean = state.searchUsers.length > 0 || state.searchText !== ''
       return isSearch ? state.searchUsers : state.users
     },
-    user(state, index): TUser {
+    user(state): TUser | undefined {
+      const i = state.currentUserIndex
       const isSearch: boolean = state.searchUsers.length > 0 || state.searchText !== ''
-      return isSearch ? state.searchUsers[index] : state.users[index]
+      if (i !== null) return isSearch ? state.searchUsers[i] : state.users[i]
     },
     searchText(state) {
       return state.searchText
