@@ -2,7 +2,7 @@
   <v-app>
     <Header/>
     <v-content
-        class=".d-none-xs"
+        class=".d-none-xs grey lighten-5"
     >
       <router-view/>
     </v-content>

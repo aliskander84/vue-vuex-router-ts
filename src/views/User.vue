@@ -1,17 +1,18 @@
 <template>
   <v-container
       fluid
-
+      class="px-3 grey lighten-5"
   >
     <v-row
-        class="px-3"
+        class="px-3 justify-center"
     >
       <v-col
-          class="px-1 py-2"
+          class="pa-0"
           cols="12"
-          lg="3"
-          md="4"
-          sm="6"
+          sm="9"
+          md="6"
+          lg="4"
+          xl="3"
       >
         <!--suppress HtmlUnknownTarget -->
         <v-img
@@ -20,16 +21,7 @@
             class="elevation-3"
             style="border-radius: 15px"
         />
-      </v-col>
-
-      <v-col
-          class="px-1 py-2"
-          cols="12"
-          lg="3"
-          md="4"
-          sm="6"
-      >
-        <v-card class="elevation-3">
+        <v-card class="elevation-3 mt-3">
           <v-card-title class="subheading font-weight-bold justify-center">
             {{name}}
           </v-card-title>
@@ -76,6 +68,17 @@
           </v-list>
         </v-card>
       </v-col>
+
+<!--      <v-col-->
+<!--          class="px-1 py-2"-->
+<!--          cols="12"-->
+<!--          sm="9"-->
+<!--          md="6"-->
+<!--          lg="4"-->
+<!--          xl="3"-->
+<!--      >-->
+
+<!--      </v-col>-->
     </v-row>
   </v-container>
 </template>

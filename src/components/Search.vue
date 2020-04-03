@@ -4,6 +4,7 @@
       ref="searchForm"
   >
     <v-text-field
+        background-color="white"
         :counter="count"
         :error-messages="isValid ? null : `No more than ${count} symbols, please!`"
         :value="searchText"
