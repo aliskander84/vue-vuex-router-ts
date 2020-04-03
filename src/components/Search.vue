@@ -1,5 +1,7 @@
 <template>
-  <v-form>
+  <v-form
+      @submit.prevent=""
+  >
     <v-text-field
         :counter="count"
         :error-messages="isValid ? null : `No more than ${count} symbols, please!`"
