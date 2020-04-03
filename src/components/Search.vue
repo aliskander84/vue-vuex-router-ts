@@ -1,17 +1,14 @@
 <template>
-  <v-form
-      class=""
-      ref="searchForm"
-  >
+  <v-form>
     <v-text-field
-        background-color="white"
         :counter="count"
         :error-messages="isValid ? null : `No more than ${count} symbols, please!`"
+        :hint="`Type search text here (no more than ${count} symbols)`"
         :value="searchText"
         @input="search"
         autocomplete="off"
+        background-color="white"
         clearable
-        :hint="`Type search text here (no more than ${count} symbols)`"
         outlined
         placeholder="Search..."
         v-model="value"
@@ -33,13 +30,10 @@
     },
     computed: {
       ...mapGetters(['searchText']),
-      searchForm(): Vue & { resetValidation: () => boolean } {
-        return this.$refs.searchForm as Vue & { resetValidation: () => boolean }
-      },
       isValid(): boolean {
         return this.value.length <= this.count
       }
     },
-    methods: mapActions(['search', 'clearSearch']),
+    methods: mapActions(['search', 'clearSearch'])
   })
 </script>

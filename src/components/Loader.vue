@@ -2,7 +2,11 @@
   <v-container fluid>
     <v-row>
       <v-col
-          :cols="cols"
+          cols="12"
+          sm="6"
+          md="4"
+          lg="3"
+          xl="2"
           :key="l"
           class="pa-1"
           v-for="l in countUsers"
@@ -20,15 +24,9 @@
 <script lang="ts">
   import Vue from 'vue'
   import {mapGetters} from 'vuex'
-  import {gridColNumber} from '@/constants/functions'
 
   export default Vue.extend({
     name: 'Loader',
-    computed: {
-      ...mapGetters(['countUsers']),
-      cols(): number {
-        return gridColNumber(this.$vuetify.breakpoint.name)
-      }
-    }
+    computed: mapGetters(['countUsers'])
   })
 </script>

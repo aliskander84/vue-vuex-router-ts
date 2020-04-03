@@ -20,7 +20,7 @@ export default new Vuex.Store({
       try {
         const res = await fetch(joinAPILink(limit))
         const {results} = await res.json()
-        console.log(results)
+        console.log('fetch from actions')
         ctx.commit('updateUsers', results)
         ctx.commit('updateIsLoading', false)
       } catch (e) {

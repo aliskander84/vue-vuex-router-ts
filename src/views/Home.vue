@@ -6,7 +6,11 @@
       <v-row>
         <v-col
             class="pa-1"
-            :cols="cols"
+            cols="12"
+            sm="6"
+            md="4"
+            lg="3"
+            xl="2"
             :key="index"
             v-for="(user, index) in users"
         >
@@ -38,19 +42,19 @@
   import Loader from '@/components/Loader.vue'
   import Search from '@/components/Search.vue'
   import UserCard from '@/components/UserCard.vue'
-  import {gridColNumber} from '@/constants/functions'
 
   export default Vue.extend({
     name: 'Home',
     computed: {
       ...mapGetters(['users', 'isLoading']),
-      cols(): number {
-        return gridColNumber(this.$vuetify.breakpoint.name)
-      }
     },
     methods: mapActions(['fetchUsers']),
     mounted() {
-      this.fetchUsers()
+      // console.log(this.users.length)
+      // if (this.users.length === 0) {
+      //   console.log('fetch from Home')
+      //   this.fetchUsers()
+      // }
     },
     components: {
       Loader,
