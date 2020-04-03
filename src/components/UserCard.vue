@@ -14,10 +14,12 @@
             :src="img"
         />
       </v-avatar>
+
       <div class="flex-grow-1">
         <v-card-title class="pt-2">
           {{firstName}} {{lastName}}
         </v-card-title>
+
         <v-card-subtitle class="pb-2 d-flex justify-space-between align-center">
           <span>ID: {{userId ? userId : '---'}}</span>
           <v-btn

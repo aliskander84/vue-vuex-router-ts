@@ -7,15 +7,6 @@
     <v-btn
         class="mr-n8"
         icon
-        v-if="!isBackBtn"
-        @click="fetchUsers"
-    >
-        <v-icon>{{icon}}</v-icon>
-    </v-btn>
-
-    <v-btn
-        class="mr-n8"
-        icon
         v-if="isBackBtn"
     >
       <router-link
@@ -32,7 +23,6 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import {mapActions} from 'vuex'
 
   export default Vue.extend({
     name: 'Header',
@@ -67,7 +57,6 @@
             return false
         }
       }
-    },
-    methods: mapActions(['fetchUsers']),
+    }
   })
 </script>

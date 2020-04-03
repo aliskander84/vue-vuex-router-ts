@@ -20,9 +20,8 @@ export default new Vuex.Store({
       try {
         const res = await fetch(joinAPILink(limit))
         const {results} = await res.json()
-        console.log('fetch from actions')
-        ctx.commit('updateUsers', results)
-        ctx.commit('updateIsLoading', false)
+        ctx.commit(UPDATE_USERS, results)
+        ctx.commit(UPDATE_IS_LOADING, false)
       } catch (e) {
         console.log(e)
       }
@@ -39,25 +38,24 @@ export default new Vuex.Store({
       ctx.commit(UPDATE_SEARCH_TEXT, text !== null ? text : '')
     },
     setCurrentUser(ctx, index) {
-      console.log('index:', index)
       ctx.commit(UPDATE_CURRENT_USER, index)
     }
   },
 
   mutations: {
-    [UPDATE_USERS] (state, users) {
+    [UPDATE_USERS](state, users) {
       state.users = users
     },
-    [UPDATE_SEARCH_USERS] (state, users) {
+    [UPDATE_SEARCH_USERS](state, users) {
       state.searchUsers = users
     },
-    [UPDATE_SEARCH_TEXT] (state, text) {
+    [UPDATE_SEARCH_TEXT](state, text) {
       state.searchText = text
     },
-    [UPDATE_IS_LOADING] (state, isLoading) {
+    [UPDATE_IS_LOADING](state, isLoading) {
       state.isLoading = isLoading
     },
-    [UPDATE_CURRENT_USER] (state, index) {
+    [UPDATE_CURRENT_USER](state, index) {
       state.currentUserIndex = index
     }
   },

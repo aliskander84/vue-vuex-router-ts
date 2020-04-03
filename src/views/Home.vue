@@ -5,23 +5,23 @@
     <v-container fluid>
       <v-row>
         <v-col
+            :key="index"
             class="pa-1"
             cols="12"
-            sm="6"
-            md="4"
             lg="3"
-            xl="2"
-            :key="index"
+            md="4"
+            sm="6"
             v-for="(user, index) in users"
+            xl="2"
         >
           <div class="users" v-if="!isLoading">
             <UserCard
-                class=""
                 :first-name="user.name.first"
                 :img="user.picture.thumbnail"
                 :index="index"
                 :last-name="user.name.last"
                 :userId="user.id.name"
+                class=""
             />
           </div>
         </v-col>
@@ -31,7 +31,9 @@
         class="not-results mt-3 mx-3 d-flex justify-center"
         v-if="users.length === 0 && !isLoading"
     >
-      No results for query
+      <v-card-title>
+        No results for query
+      </v-card-title>
     </div>
   </div>
 </template>
@@ -45,16 +47,11 @@
 
   export default Vue.extend({
     name: 'Home',
-    computed: {
-      ...mapGetters(['users', 'isLoading']),
-    },
+    computed: mapGetters(['users', 'isLoading']),
     methods: mapActions(['fetchUsers']),
     mounted() {
-      // console.log(this.users.length)
-      // if (this.users.length === 0) {
-      //   console.log('fetch from Home')
-      //   this.fetchUsers()
-      // }
+      // debugger
+      if (this.users.length === 0) this.fetchUsers()
     },
     components: {
       Loader,
