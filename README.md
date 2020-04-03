@@ -1,5 +1,5 @@
 # Test project
-App link: [](https://alexchegash.github.io/)
+App link: [link](https://alexchegash.github.io/)
 ##Stack:
 - Vue
 - Vuex
