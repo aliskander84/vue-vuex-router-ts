@@ -13,7 +13,6 @@
         clearable
         outlined
         placeholder="Search..."
-        v-model="value"
     />
   </v-form>
 </template>
@@ -26,16 +25,15 @@
     name: 'Search',
     data() {
       return {
-        value: '',
         count: 9
       }
     },
     computed: {
       ...mapGetters(['searchText']),
       isValid(): boolean {
-        return this.value.length <= this.count
+        return this.searchText.length <= this.count
       }
     },
-    methods: mapActions(['search', 'clearSearch'])
+    methods: mapActions(['search'])
   })
 </script>
