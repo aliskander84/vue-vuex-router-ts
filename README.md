@@ -1,6 +1,6 @@
 # Test project
 
-App link: [link](https://alexchegash.github.io/)
+View the app [here](https://alexchegash.github.io/)
 
 ## Stack:
 - Vue
@@ -8,8 +8,3 @@ App link: [link](https://alexchegash.github.io/)
 - Vue-router
 - Typescript
 - Vuetify
-
-## Bugs:
-- when search mode switch to user page and back cleared input but no return init state of users list
-
-
