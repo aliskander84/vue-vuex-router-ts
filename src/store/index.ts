@@ -80,7 +80,6 @@ export default new Vuex.Store({
       if (i !== null) return isSearch ? state.searchUsers[i] : state.users[i]
     },
     searchText(state) {
-      console.log('get search text')
       return state.searchText
     },
     isLoading(state) {
