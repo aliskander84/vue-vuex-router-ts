@@ -1,24 +1,15 @@
-# vue-vuex-router-ts
+# Test project
 
-## Project setup
-```
-yarn install
-```
+App link: [link](https://alexchegash.github.io/)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Stack:
+- Vue
+- Vuex
+- Vue-router
+- Typescript
+- Vuetify
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## Bugs:
+- when search mode switch to user page and back cleared input but no return init state of users list
 
-### Lints and fixes files
-```
-yarn lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
