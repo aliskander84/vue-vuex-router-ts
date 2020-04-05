@@ -1,6 +1,6 @@
 # Test project
 
-View the app [here](https://alexchegash.github.io/)
+View the app [here](https://alexchegash.github.io/vue/)
 
 ## Stack:
 - Vue
